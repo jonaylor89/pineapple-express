@@ -1,7 +1,10 @@
 <template>
   <nav class="flex items-center justify-between flex-wrap bg-itl-nav-bar p-6">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-semibold text-xl tracking-tight">In The Loop</span>
+      <img src="assets/logo_white.png" height="30" width="30" />
+      <span class="font-semibold text-xl pl-3 tracking-tight">
+        In The Loop</span
+      >
     </div>
     <div class="block lg:hidden">
       <button
@@ -28,12 +31,21 @@
         </svg>
       </button>
     </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div
+      class="
+        w-full
+        block
+        flex-grow
+        lg:flex lg:flex-row-reverse
+        lg:items-center
+        lg:w-auto
+      "
+    >
       <div>
         <a
           href="/"
           class="
-            inline-block
+            lg:inline-block
             text-sm
             px-4
             py-2
@@ -52,7 +64,7 @@
         <a
           href="/activity"
           class="
-            inline-block
+            lg:inline-block
             text-sm
             px-4
             py-2
@@ -71,7 +83,8 @@
         <a
           :href="profilePath"
           class="
-            inline-block
+            lg:inline-block
+            inlne-block
             text-sm
             px-4
             py-2
