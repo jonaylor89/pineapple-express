@@ -2,6 +2,30 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  vite: { ssr: true },
+
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyBIHwGYfS7MGREOR4nSTYJxZPLXNApTJ3M',
+      authDomain: 'in-the-loop-306520.firebaseapp.com',
+      projectId: 'in-the-loop-306520',
+      storageBucket: 'in-the-loop-306520.appspot.com',
+      messagingSenderId: '269420857313',
+      appId: '1:269420857313:web:1ace984d27362ddcf7f4a0',
+      measurementId: 'G-D8EFYQBB2Q'
+    },
+    services: {
+      auth: true,
+      firestore: true,
+      functions: true,
+      storage: true,
+      database: true,
+      performance: true,
+      analytics: true,
+      remoteConfig: true
+    }
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'pineapple-express',
@@ -39,6 +63,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/firebase',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
