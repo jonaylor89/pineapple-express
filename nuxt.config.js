@@ -38,6 +38,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/fontawesome',
     'nuxt-vite',
   ],
 
@@ -76,9 +77,16 @@ export default {
           subscribeManually: false
         },
         ssr: false,
-        emulatorPort: 9099,
-        emulatorHost: 'http://localhost',
       },
     },
+  },
+
+  fontawesome: {
+    component: 'fa',
+    suffix: true,
+    icons: {
+      solid: ['faHome'],
+      brands: ['faApple', 'faGoogle'],
+    }
   },
 }
