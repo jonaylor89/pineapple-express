@@ -43,7 +43,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/firebase',
+    
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -56,29 +56,5 @@ export default {
     }
   },
 
-  firebase: {
-    config: {
-      apiKey: 'AIzaSyBIHwGYfS7MGREOR4nSTYJxZPLXNApTJ3M',
-      authDomain: 'in-the-loop-306520.firebaseapp.com',
-      projectId: 'in-the-loop-306520',
-      storageBucket: 'in-the-loop-306520.appspot.com',
-      messagingSenderId: '269420857313',
-      appId: '1:269420857313:web:1ace984d27362ddcf7f4a0',
-      measurementId: 'G-D8EFYQBB2Q'
-    },
-    // onFirebaseHosting: process.env.NODE_ENV === 'development' ? false : true,
-    services: {
-      auth: {
-        persistence: 'local', // default
-        initialize: {
-          onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
-          onAuthStateChangedAction: 'onAuthStateChangedAction',
-          subscribeManually: false
-        },
-        ssr: false,
-        emulatorPort: 9099,
-        emulatorHost: 'http://localhost',
-      },
-    },
-  },
+  
 }
