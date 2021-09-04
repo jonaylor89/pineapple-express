@@ -1,5 +1,9 @@
-<template></template>
+<template>
+  <div></div>
+</template>
 
 <script>
-export default {};
+export default {
+   layout: 'authenticated',
+};
 </script>
