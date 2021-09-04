@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+  <nav class="flex items-center justify-between flex-wrap bg-itl-nav-bar p-6">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <span class="font-semibold text-xl tracking-tight">In The Loop</span>
     </div>
@@ -31,7 +31,7 @@
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div>
         <a
-          href="#"
+          href="/"
           class="
             inline-block
             text-sm
@@ -42,8 +42,7 @@
             text-white
             border-white
             hover:border-transparent
-            hover:text-teal-500
-            hover:bg-white
+            hover:text-purple-500
             mt-4
             lg:mt-0
           "
@@ -51,7 +50,7 @@
           Home
         </a>
         <a
-          href="#"
+          href="/activity"
           class="
             inline-block
             text-sm
@@ -62,8 +61,7 @@
             text-white
             border-white
             hover:border-transparent
-            hover:text-teal-500
-            hover:bg-white
+            hover:text-purple-500
             mt-4
             lg:mt-0
           "
@@ -71,7 +69,7 @@
           Activity
         </a>
         <a
-          href="#"
+          :href="profilePath"
           class="
             inline-block
             text-sm
@@ -82,8 +80,7 @@
             text-white
             border-white
             hover:border-transparent
-            hover:text-teal-500
-            hover:bg-white
+            hover:text-purple-500
             mt-4
             lg:mt-0
           "
@@ -96,5 +93,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    profilePath() {
+      return "/" + this.$store.state.user.id;
+    },
+  },
+};
 </script>
