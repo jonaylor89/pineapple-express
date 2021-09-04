@@ -3,26 +3,14 @@
     <h1 class="text-5xl mt-5 ml-10">Activity</h1>
     <div class="grid-cols-1 p-5 m-5 space-y-4">
 
-      <div class="justify-between hover:bg-gray-200 h-14 p-2.5 flex items-center border-2 rounded-md">
-        <div>{{ activities[0].type.charAt(0).toUpperCase() + activities[0].type.slice(1)}} from
-          <span class="text-indigo-700 hover:bg-gray-300 rounded-lg">@{{ activities[0].fromUserName }}</span>
-        </div>
-        <div class="mr-5 text-gray-500">10 mins ago</div>
-      </div>
-
-      <div class="justify-between hover:bg-gray-200 h-14 p-2.5 flex items-center border-2 rounded-md">
-        <div>{{ activities[1].type.charAt(0).toUpperCase() + activities[1].type.slice(1) }} from
-          <span class="text-indigo-700 hover:bg-gray-300 rounded-lg">@{{ activities[1].fromUserName }}</span>
-        </div>
-        <div class="mr-5 text-gray-500">12 mins ago</div>
-      </div>
-
-      <div class="justify-between hover:bg-gray-200 h-14 p-2.5 flex items-center border-2 rounded-md">
-        <div>{{ activities[2].type.charAt(0).toUpperCase() + activities[2].type.slice(1) }} from
-          <span class="text-indigo-700 hover:bg-gray-300 rounded-lg">@{{ activities[2].fromUserName }}</span>
-        </div>
-        <div class="mr-5 text-gray-500">35 mins ago</div>
-      </div>
+      <ul class="space-y-4">
+        <li v-for="(activity, index) in activities" :key="activity">
+          <ActivityWidget 
+          :type="activities[index].type" 
+          :fromUserName="activities[index].fromUserName" 
+          />
+        </li>
+      </ul>
 
     </div>
   </div>
@@ -64,5 +52,3 @@ export default {
 };
 
 </script>
-<style scoped>
-</style>

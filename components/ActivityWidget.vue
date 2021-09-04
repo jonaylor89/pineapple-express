@@ -3,13 +3,13 @@
         <div>{{ type.charAt(0).toUpperCase() + type.slice(1)}} from
           <span class="text-indigo-700 hover:bg-gray-300 rounded-lg">@{{ fromUserName }}</span>
         </div>
-        <div class="mr-5 text-gray-500">10 mins ago</div>
+        <!-- NOTE: Hard coded timestamp for display purposes -->
+        <div class="mr-5 text-gray-500">10 mins ago</div> 
     </div>
 </template>
 
 <script>
 export default {
-    name: "activity",
     props: ['type', 'fromUserName']
 }
 </script>
