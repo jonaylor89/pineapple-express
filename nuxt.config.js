@@ -72,12 +72,17 @@ export default {
       auth: {
         persistence: 'local', // default
         initialize: {
-          onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
           onAuthStateChangedAction: 'onAuthStateChangedAction',
           subscribeManually: false
         },
         ssr: false,
       },
+      firestore: true, 
+      functions: true,
+      storage: true,
+      messaging: true,
+      remoteConfig: true,
+
     },
   },
 

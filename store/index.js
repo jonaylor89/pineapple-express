@@ -14,31 +14,44 @@ export const getters = {
 };
 
 export const mutations = {
-    ON_AUTH_STATE_CHANGED_MUTATION(state, { authUser, claims }) {
-
-        if (!authUser) {
-            // claims = null
-            // perform logout operations
-        } else {
-            // Do something with the authUser and the claims object...
-
-            // pull user data from database
-            const { uid, email } = authUser;
-            state.user = { id: uid, email: email, };
-
-            this.$router.push('/');
-        }
-    }
+    SET_USER(state, userData) {
+        state.user = {
+            id: userData.id,
+            email: userData.email,
+            username: userData?.username || "Anonymous",
+            bio: userData?.bio || "",
+            location: userData?.location || "",
+            loopsCount: userData?.loopsCount || 0,
+            onboarded: userData?.onboarded || false,
+            profilePicture: userData?.profilePicture || "",
+        };
+    },
 }
 
 export const actions = {
-    onAuthStateChangedAction(ctx, { authUser, claims }) {
+    async onAuthStateChangedAction(ctx, { authUser, claims }) {
         if (!authUser) {
             // claims = null
             // Perform logout operations
         } else {
-            console.log(authUser.uid);
             // Do something with the authUser and the claims object...
+            console.log(authUser.uid);
+            const { uid, email } = authUser;
+            const user = await this.$fire.firestore.collection('users').doc(uid).get();
+            const userData = user?.data() || null;
+
+            ctx.commit('SET_USER', {
+                id: uid,
+                email: email,
+                username: userData?.username || "Anonymous",
+                bio: userData?.bio || "",
+                location: userData?.location || "",
+                loopsCount: userData?.loopsCount || 0,
+                onboarded: userData?.onboarded || false,
+                profilePicture: userData?.profilePicture || ""
+            });
+
+            this.$router.push('/');
         }
     },
     async signInWithGoogle() {

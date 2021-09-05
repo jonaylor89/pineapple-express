@@ -4,13 +4,14 @@
       class="
         fixed
         w-full
-        z-50 
+        z-50
         flex
         items-center
         justify-between
         flex-wrap
         bg-itl-nav-bar
-        p-6
+        p-2
+        px-12
       "
     >
       <NuxtLink to="/">
@@ -113,7 +114,10 @@
               lg:mt-0
             "
           >
-            Profile
+            <img
+              class="inline object-cover w-10 h-10 rounded-full"
+              :src="profilePicture"
+            />
           </NuxtLink>
         </div>
       </div>
@@ -122,10 +126,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   computed: {
+    ...mapState({
+      username: (state) => state.user.username || "Anonymous",
+      profilePicture: (state) => state.user.profilePicture || "",
+    }),
     profilePath() {
-      return "/" + this.$store.state.user.id;
+      return "/" + this.username;
     },
   },
 };
