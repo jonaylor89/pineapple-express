@@ -94,4 +94,10 @@ export default {
       brands: ['faApple', 'faGoogle'],
     }
   },
+
+  loadingIndicator: {
+    name: 'wave',
+    color: '#101418',
+    background: 'white'
+  }
 }
