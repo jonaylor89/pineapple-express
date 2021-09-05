@@ -44,7 +44,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    
+    '@nuxtjs/firebase',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -77,7 +77,7 @@ export default {
         },
         ssr: false,
       },
-      firestore: true, 
+      firestore: true,
       functions: true,
       storage: true,
       messaging: true,

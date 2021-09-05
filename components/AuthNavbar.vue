@@ -17,7 +17,7 @@
       <NuxtLink to="/">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <img src="assets/logo_white.png" height="30" width="30" />
-          <span class="font-semibold text-xl pl-3 tracking-tight">
+          <span class="font-semibold text-2xl pl-3 tracking-tight">
             In The Loop</span
           >
         </div>
@@ -68,6 +68,7 @@
               leading-none
               rounded
               text-white
+              font-semibold
               border-white
               hover:border-transparent
               hover:text-purple-500
@@ -87,6 +88,7 @@
               leading-none
               rounded
               text-white
+              font-semibold
               border-white
               hover:border-transparent
               hover:text-purple-500
@@ -122,6 +124,7 @@
         </div>
       </div>
     </nav>
+    <div class="h-20"></div>
   </div>
 </template>
 
@@ -131,7 +134,7 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
-      username: (state) => state.user?.username || "Anonymous",
+      username: (state) => state.user?.username || "anonymous",
       profilePicture: (state) => state.user?.profilePicture || "",
     }),
     profilePath() {

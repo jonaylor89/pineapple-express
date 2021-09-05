@@ -43,7 +43,7 @@ export const actions = {
             ctx.commit('SET_USER', {
                 id: uid,
                 email: email,
-                username: userData?.username || "Anonymous",
+                username: userData?.username || "anonymous",
                 bio: userData?.bio || "",
                 location: userData?.location || "",
                 loopsCount: userData?.loopsCount || 0,

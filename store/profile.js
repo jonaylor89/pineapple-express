@@ -27,7 +27,7 @@ export const actions = {
             ctx.commit('SET_VISITED_USER', {
                 id: userQuery.docs[0].id,
                 email: userData.email,
-                username: userData?.username || "Anonymous",
+                username: userData?.username || "anonymous",
                 bio: userData?.bio || "",
                 location: userData?.location || "",
                 loopsCount: userData?.loopsCount || 0,
