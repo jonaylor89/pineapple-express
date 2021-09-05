@@ -27,17 +27,17 @@
         />
         <div class="w-full ml-4 flex flex-row justify-between items-center">
           <div class="flex flex-col items-center">
-            <div class="text-lg font-bold">
+            <div class="text-xl font-bold">
               {{ this.visitedUser.loopsCount || 0 }}
             </div>
             <div>Loops</div>
           </div>
           <div class="flex flex-col items-center">
-            <div class="text-lg font-bold">{{ this.followerCount || 0 }}</div>
+            <div class="text-xl font-bold">{{ this.followerCount || 0 }}</div>
             <div>Followers</div>
           </div>
           <div class="flex flex-col items-center">
-            <div class="text-lg font-bold">{{ this.followingCount || 0 }}</div>
+            <div class="text-xl font-bold">{{ this.followingCount || 0 }}</div>
             <div>Following</div>
           </div>
         </div>

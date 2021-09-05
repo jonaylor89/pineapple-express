@@ -46,6 +46,7 @@
       py-2
       rounded-lg
     "
+    v-on:click="_toSettings"
   >
     edit
   </button>
@@ -78,6 +79,9 @@ export default {
     },
     _unfollowUser() {
       this.unfollowUser(this.visitedUserId);
+    },
+    _toSettings() {
+      this.$router.push("/settings");
     },
   },
 };
