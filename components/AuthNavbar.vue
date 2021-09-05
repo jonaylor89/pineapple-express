@@ -134,9 +134,7 @@ export default {
       username: (state) => state.user.username || "Anonymous",
       profilePicture: (state) => state.user.profilePicture || "",
     }),
-    profilePath() {
-      return "/" + this.username;
-    },
+    profilePath: () => ("/" + this.username),
   },
 };
 </script>
