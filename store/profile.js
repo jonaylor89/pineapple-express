@@ -35,7 +35,9 @@ export const actions = {
                 profilePicture: userData?.profilePicture || "",
             });
         } else {
-            console.log("USER DOESN'T EXIST");;
+            console.log("USER DOESN'T EXIST");
+            // Navigator to 404 page
+            this.$router.push('/');
         }
     },
 };
