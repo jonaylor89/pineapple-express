@@ -1,6 +1,9 @@
 
 export const state = () => ({
     visitedUser: null,
+    isFollowing: false,
+    followerCount: 0,
+    followingCount: 0,
 });
 
 export const mutations = {
@@ -16,6 +19,9 @@ export const mutations = {
             profilePicture: userData?.profilePicture || "",
         };
     },
+    SET_IS_FOLLOWING(state, isFollowing) {
+        state.isFollowing = isFollowing;
+    }
 };
 
 export const actions = {
@@ -39,5 +45,29 @@ export const actions = {
             // Navigator to 404 page
             this.$router.push('/');
         }
+    },
+    async fetchFollowerCount(ctx, visitedUserId) {
+
+    },
+    async fetchFollowingCount(ctx, visitedUserId) {
+
+    },
+    async isUserFollowing(ctx, visitedUserId) {
+        try {
+            console.log(visitedUserId)
+            // const isFollowingDoc = await this.$fire.collection('followers').doc(visitedUserId).collection('Followers').doc(ctx.state.user.id).get();
+            // const isFollowing = isFollowingDoc.exists();
+            // ctx.commit('SET_IS_FOLLOWING', isFollowing);
+
+            ctx.commit('SET_IS_FOLLOWING', false);
+        } catch (e) {
+            console.log(e.message);
+        }
+    },
+    async followUser(ctx, visitedUser) {
+        ctx.commit('SET_IS_FOLLOWING', true);
+    },
+    async unfollowUser(ctx, visitedUser) {
+        ctx.commit('SET_IS_FOLLOWING', false);
     },
 };

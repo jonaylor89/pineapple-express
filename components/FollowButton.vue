@@ -1,0 +1,80 @@
+<template>
+  <button
+    v-if="this.currentUserId !== this.visitedUserId && !isFollowing"
+    type="button"
+    class="
+      w-full
+      bg-purple-200
+      text-purple-700 text-base
+      font-semibold
+      px-6
+      py-2
+      rounded-lg
+    "
+    v-on:click="followUser"
+  >
+    follow
+  </button>
+  <button
+    v-else-if="this.currentUserId !== this.visitedUserId && isFollowing"
+    type="button"
+    class="
+      w-full
+      bg-purple-200
+      text-purple-700 text-base
+      font-semibold
+      px-6
+      py-2
+      rounded-lg
+    "
+    v-on:click="unfollowUser"
+  >
+    following
+  </button>
+  <button
+    v-else
+    type="button"
+    class="
+      w-full
+      bg-purple-200
+      text-purple-700 text-base
+      font-semibold
+      px-6
+      py-2
+      rounded-lg
+    "
+  >
+    edit
+  </button>
+</template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  async fetch() {
+    if (
+      this.visitedUserId !== null &&
+      this.visitedUserId !== "" &&
+      this.visitedUserId !== this.currentUserId
+    ) {
+      this.isUserFollowing(this.visitedUserId);
+    }
+    return {};
+  },
+  computed: {
+    ...mapState({
+      visitedUserId: (state) => state.profile.visitedUser?.id || "",
+      currentUserId: (state) => state.user.id,
+      isFollowing: (state) => state.profile.isFollowing,
+    }),
+  },
+  methods: {
+    ...mapActions([
+      "profile/isUserFollowing",
+      "profile/followUser",
+      "profiler/unfollowUser",
+    ]),
+  },
+};
+</script>
