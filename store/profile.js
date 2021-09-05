@@ -87,12 +87,12 @@ export const actions = {
     },
     async followUser(ctx, visitedUserId) {
         try {
-            // const callable = this.$fireModule.functions.httpsCallable('followUser');
-            // const results = await callable({
-            //     follower: ctx.state.user.id,
-            //     followed: visitedUserId,
-            // })
-            // console.log(results.data);
+            const callable = this.$fireModule.functions.httpsCallable('followUser');
+            const results = await callable({
+                follower: ctx.rootState.user.id,
+                followed: visitedUserId,
+            })
+            console.log(results.data);
             ctx.commit('SET_IS_FOLLOWING', true);
             ctx.commit('INCREMENT_FOLLOWER_COUNT');
         } catch (e) {
@@ -102,12 +102,12 @@ export const actions = {
     async unfollowUser(ctx, visitedUserId) {
 
         try {
-            // const callable = this.$fireModule.functions.httpsCallable('unfollowUser');
-            // const results = await callable({
-            //     follower: ctx.state.user.id,
-            //     followed: visitedUserId,
-            // })
-            // console.log(results.data);
+            const callable = this.$fireModule.functions.httpsCallable('unfollowUser');
+            const results = await callable({
+                follower: ctx.rootState.user.id,
+                followed: visitedUserId,
+            })
+            console.log(results.data);
             ctx.commit('SET_IS_FOLLOWING', false);
             ctx.commit('DECREMENT_FOLLOWER_COUNT');
         } catch (e) {

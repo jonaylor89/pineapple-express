@@ -5,6 +5,7 @@
     class="
       w-full
       bg-purple-200
+      hover:bg-purple-300
       text-purple-700 text-base
       font-semibold
       px-6
@@ -20,8 +21,9 @@
     type="button"
     class="
       w-full
-      bg-purple-200
-      text-purple-700 text-base
+      bg-purple-700
+      hover:bg-purple-300
+      text-white text-base
       font-semibold
       px-6
       py-2
@@ -37,6 +39,7 @@
     class="
       w-full
       bg-purple-200
+      hover:bg-purple-300
       text-purple-700 text-base
       font-semibold
       px-6
