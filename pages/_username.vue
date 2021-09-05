@@ -78,7 +78,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions(["profile/fetchVisitedUserByUsername"]),
+    ...mapActions("profile", ["fetchVisitedUserByUsername"]),
   },
 };
 </script>

@@ -82,7 +82,6 @@ export default {
       storage: true,
       messaging: true,
       remoteConfig: true,
-
     },
   },
 

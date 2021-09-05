@@ -21,6 +21,18 @@ export const mutations = {
     },
     SET_IS_FOLLOWING(state, isFollowing) {
         state.isFollowing = isFollowing;
+    },
+    SET_FOLLOWER_COUNT(state, count) {
+        state.followerCount = count;
+    },
+    SET_FOLLOWING_COUNT(state, count) {
+        state.followingCount = count;
+    },
+    INCREMENT_FOLLOWER_COUNT(state) {
+        state.followerCount = state.followerCount + 1;
+    },
+    DECREMENT_FOLLOWER_COUNT(state) {
+        state.followerCount = state.followerCount - 1;
     }
 };
 
@@ -30,8 +42,9 @@ export const actions = {
         const userQuery = await this.$fire.firestore.collection('users').where('username', '==', username).limit(1).get();
         if (userQuery.docs.length > 0) {
             const userData = userQuery.docs[0].data();
+            const userId = userQuery.docs[0].id;
             ctx.commit('SET_VISITED_USER', {
-                id: userQuery.docs[0].id,
+                id: userId,
                 email: userData.email,
                 username: userData?.username || "anonymous",
                 bio: userData?.bio || "",
@@ -40,6 +53,10 @@ export const actions = {
                 onboarded: userData?.onboarded || false,
                 profilePicture: userData?.profilePicture || "",
             });
+
+            ctx.dispatch('fetchFollowerCount', userId);
+            ctx.dispatch('fetchFollowingCount', userId);
+            ctx.dispatch('fetchIsFollowing', userId);
         } else {
             console.log("USER DOESN'T EXIST");
             // Navigator to 404 page
@@ -47,27 +64,54 @@ export const actions = {
         }
     },
     async fetchFollowerCount(ctx, visitedUserId) {
+        const followersSnapshot = await this.$fire.firestore.collection('followers').doc(visitedUserId).collection('Followers').get();
+        const count = followersSnapshot.docs.length;
 
+        ctx.commit('SET_FOLLOWER_COUNT', count);
     },
     async fetchFollowingCount(ctx, visitedUserId) {
+        const followingsSnapshot = await this.$fire.firestore.collection('following').doc(visitedUserId).collection('Following').get();
+        const count = followingsSnapshot.docs.length;
 
+        ctx.commit('SET_FOLLOWING_COUNT', count)
     },
-    async isUserFollowing(ctx, visitedUserId) {
+    async fetchIsFollowing(ctx, visitedUserId) {
         try {
-            console.log(visitedUserId)
-            // const isFollowingDoc = await this.$fire.collection('followers').doc(visitedUserId).collection('Followers').doc(ctx.state.user.id).get();
-            // const isFollowing = isFollowingDoc.exists();
-            // ctx.commit('SET_IS_FOLLOWING', isFollowing);
-
-            ctx.commit('SET_IS_FOLLOWING', false);
+            const currentUserId = ctx.rootState.user.id;
+            const isFollowingDoc = await this.$fire.firestore.collection('followers').doc(visitedUserId).collection('Followers').doc(currentUserId).get();
+            const isFollowing = isFollowingDoc.exists;
+            ctx.commit('SET_IS_FOLLOWING', isFollowing);
         } catch (e) {
             console.log(e.message);
         }
     },
-    async followUser(ctx, visitedUser) {
-        ctx.commit('SET_IS_FOLLOWING', true);
+    async followUser(ctx, visitedUserId) {
+        try {
+            // const callable = this.$fireModule.functions.httpsCallable('followUser');
+            // const results = await callable({
+            //     follower: ctx.state.user.id,
+            //     followed: visitedUserId,
+            // })
+            // console.log(results.data);
+            ctx.commit('SET_IS_FOLLOWING', true);
+            ctx.commit('INCREMENT_FOLLOWER_COUNT');
+        } catch (e) {
+            console.log(e.message);
+        }
     },
-    async unfollowUser(ctx, visitedUser) {
-        ctx.commit('SET_IS_FOLLOWING', false);
+    async unfollowUser(ctx, visitedUserId) {
+
+        try {
+            // const callable = this.$fireModule.functions.httpsCallable('unfollowUser');
+            // const results = await callable({
+            //     follower: ctx.state.user.id,
+            //     followed: visitedUserId,
+            // })
+            // console.log(results.data);
+            ctx.commit('SET_IS_FOLLOWING', false);
+            ctx.commit('DECREMENT_FOLLOWER_COUNT');
+        } catch (e) {
+            console.log(e.message);
+        }
     },
 };

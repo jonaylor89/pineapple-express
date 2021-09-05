@@ -11,7 +11,7 @@
       py-2
       rounded-lg
     "
-    v-on:click="followUser"
+    v-on:click="_followUser"
   >
     follow
   </button>
@@ -27,7 +27,7 @@
       py-2
       rounded-lg
     "
-    v-on:click="unfollowUser"
+    v-on:click="_unfollowUser"
   >
     following
   </button>
@@ -52,29 +52,30 @@
 import { mapState, mapActions } from "vuex";
 
 export default {
-  async fetch() {
-    if (
-      this.visitedUserId !== null &&
-      this.visitedUserId !== "" &&
-      this.visitedUserId !== this.currentUserId
-    ) {
-      this.isUserFollowing(this.visitedUserId);
-    }
-    return {};
-  },
   computed: {
     ...mapState({
       visitedUserId: (state) => state.profile.visitedUser?.id || "",
       currentUserId: (state) => state.user.id,
       isFollowing: (state) => state.profile.isFollowing,
+      followerCount: (state) => state.profile.followerCount,
+      followingCount: (state) => state.profile.followingCount,
     }),
   },
   methods: {
-    ...mapActions([
-      "profile/isUserFollowing",
-      "profile/followUser",
-      "profiler/unfollowUser",
+    ...mapActions("profile", [
+      "fetchIsFollowing",
+      "followUser",
+      "unfollowUser",
     ]),
+    _fetchIsFollowing() {
+      this.fetchIsFollowing(this.visitedUserId);
+    },
+    _followUser() {
+      this.followUser(this.visitedUserId);
+    },
+    _unfollowUser() {
+      this.unfollowUser(this.visitedUserId);
+    },
   },
 };
 </script>
