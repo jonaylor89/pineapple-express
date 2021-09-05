@@ -54,7 +54,6 @@
     </div>
     <div class="h-screen flex-grow flex flex-col mx-3 lg:mx-40">
       <div class="py-3 font-bold text-xl">User Settings</div>
-      <label class="form-input-label">Artist Name</label>
       <input
         type="text"
         class="
@@ -128,23 +127,23 @@
       <div class="py-3 font-bold text-xl">More Options</div>
       <hr />
       <div class="my-2 hover:font-bold">
-        <a href="">Join out Discord Community</a>
+        <a href="https://discord.gg/ZwpPGx98Qc">Join out Discord Community</a>
       </div>
       <hr />
       <div class="my-2 hover:font-bold">
-        <a href="">In The Loop Podcast</a>
+        <a href="https://open.spotify.com/show/6LQi6uQ5nEgIK9vo0am9PS">In The Loop Podcast</a>
       </div>
       <hr />
       <div class="my-2 hover:font-bold">
-        <a href="">Follow Us on Instagram</a>
+        <a href="https://www.instagram.com/itl_studios/">Follow Us on Instagram</a>
       </div>
       <hr />
       <div class="my-2 hover:font-bold">
-        <a href="">Privacy Policy</a>
+        <a href="https://intheloopstudio.com/privacy">Privacy Policy</a>
       </div>
       <hr />
       <div class="my-2 hover:font-bold">
-        <a href="">Terms of Service</a>
+        <a href="https://intheloopstudio.com/terms">Terms of Service</a>
       </div>
       <hr />
       <div class="my-2 hover:font-bold cursor-pointer">Sign Out</div>
@@ -159,7 +158,6 @@
 </template>
 
 <script>
-
 export default {
   layout: "authenticated",
   async asyncData({ store }) {
@@ -167,7 +165,7 @@ export default {
       username: store.state.user.username ?? "anonymous",
       bio: store.state.user.bio ?? "",
       location: store.state.user.location ?? "",
-      profilePicture: store.state.user.profilePicture ?? '',
+      profilePicture: store.state.user.profilePicture ?? "",
     };
   },
 };
