@@ -10,6 +10,7 @@
           md:flex-col
           justify-center
           items-center
+          md:items-start
         "
       >
         <img
@@ -25,7 +26,7 @@
             md:h-64
             md:w-64
           "
-          :src="currentUser.profilePicture || ''"
+          :src="profilePicture || ''"
         />
         <!-- <div
           class="
@@ -44,10 +45,10 @@
         </div> -->
         <div class="mx-3 md:mx-0">
           <div class="font-bold text-xl md:text-4xl">
-            {{ this.currentUser.username || "anonymous" }}
+            {{ this.username || "anonymous" }}
           </div>
-          <div>{{ this.currentUser.bio || "" }}</div>
-          <div>{{ this.currentUser.location || "" }}</div>
+          <div>{{ this.bio || "" }}</div>
+          <div>{{ this.location || "" }}</div>
         </div>
       </div>
     </div>
@@ -70,6 +71,7 @@
           focus:ring-0
         "
         placeholder="Artist Name"
+        v-model="username"
       />
       <input
         type="text"
@@ -87,6 +89,7 @@
           focus:ring-0
         "
         placeholder="Bio"
+        v-model="bio"
       />
       <input
         type="text"
@@ -104,6 +107,7 @@
           focus:ring-0
         "
         placeholder="Location"
+        v-model="location"
       />
       <div class="flex justify-end md:justify-start">
         <button
@@ -155,17 +159,16 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 
 export default {
   layout: "authenticated",
-  fetch() {
-    this.$store.commit("settings/SET_USER", this.$store.state.user);
-  },
-  computed: {
-    ...mapState({
-      currentUser: (state) => state.settings.tempUser,
-    }),
+  async asyncData({ store }) {
+    return {
+      username: store.state.user.username ?? "anonymous",
+      bio: store.state.user.bio ?? "",
+      location: store.state.user.location ?? "",
+      profilePicture: store.state.user.profilePicture ?? '',
+    };
   },
 };
 </script>
