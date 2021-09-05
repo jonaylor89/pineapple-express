@@ -131,10 +131,12 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
-      username: (state) => state.user.username || "Anonymous",
-      profilePicture: (state) => state.user.profilePicture || "",
+      username: (state) => state.user?.username || "Anonymous",
+      profilePicture: (state) => state.user?.profilePicture || "",
     }),
-    profilePath: () => ("/" + this.username),
+    profilePath() {
+      return "/" + this.username;
+    },
   },
 };
 </script>
