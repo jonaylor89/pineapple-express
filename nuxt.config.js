@@ -96,7 +96,7 @@ export default {
   },
 
   loadingIndicator: {
-    name: 'wave',
+    name: 'cube-grid',
     color: '#101418',
     background: 'white'
   }
