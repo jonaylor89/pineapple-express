@@ -5,7 +5,8 @@
     border-2 border-purple-700 
     mt-6 mx-5 
     space-x-1 
-    rounded-xl">
+    rounded-xl
+    md:mx-96">
 
         <div v-on:click="toggle" 
         class=
@@ -14,12 +15,16 @@
         bg-indigo-600
         text-white
         hover:bg-grey-300
+        my-8
+        ml-12
+        md:w-20 md:justify-center
        ">
         {{ playing ? "Pause" : "Play "}}
         </div>
     
         <div class="col-span-3 flex-col">
-            <h1>1017 Pooh Shiesty Cove</h1>
+            <h1 class="md:ml-6">1017 Pooh Shiesty Cove</h1>
+            <h2 class="md:ml-6 text-gray-400">Playboy Carti</h2>
             <!-- Waveform -->
             <div :id='idPath'
                 class=
