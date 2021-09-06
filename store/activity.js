@@ -28,24 +28,27 @@ export const getters = {
 }
 
 export const mutations = {
-    SET_ACTIVITIES(state, userData) {
-        state.fromUserId = {
-            id: userData.id,
-            email: userData.email,
-            username: userData?.username || "Anonymous",
-            bio: userData?.bio || "",
-            location: userData?.location || "",
-            loopsCount: userData?.loopsCount || 0,
-            onBoarded: userData?.onboarded || false,
-            profilePicture: userData?.profilePicture || "",
-        };
-        state.timestamp = userData.timestamp;
-        state.type = userData.type;
+    SET_ACTIVITIES(state, activities) {
+        state.activities = activities;
     },
 };
 
 export const actions = {
-    async fetchUserActivities(userId) {
-        console.log("fetchting activities: ", usedId);
+    async fetchUserActivities(ctx, userId) {
+        console.log("fetching activities: ", userId);
+        const activitiesDocs = await this.$fire.firestore
+                                    .collection('activities')
+                                    .limit(20)
+                                    .get();
+        console.log(activitiesDocs.docs.length);
+        const activities = activitiesDocs.docs.map(() => {
+            return {
+                fromUserId: null,
+                toUserId: null,
+                type: null,
+                timestamp: null,
+            }
+        });
+        ctx.commit('SET_ACTIVITIES', activities);
     }
 }

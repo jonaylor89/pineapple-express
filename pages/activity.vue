@@ -35,71 +35,9 @@
 <script>
 export default {
   layout: "authenticated",
-  data() {
-    return {
-      activities: [
-        {
-          fromUserName: "thomas",
-          type: "like",
-          toUserName: "roland",
-        },
-        {
-          fromUserName: "chris",
-          type: "comment",
-          toUserName: "sohail",
-        },
-        {
-          fromUserName: "johannes",
-          type: "follow",
-          toUserName: "thomas",
-        },
-        {
-          fromUserName: "thomas",
-          type: "follow",
-          toUserName: "johannes",
-        },
-        {
-          fromUserName: "roland",
-          type: "like",
-          toUserName: "chris",
-        },
-        {
-          fromUserName: "sohail",
-          type: "comment",
-          toUserName: "thomas",
-        },
-        {
-          fromUserName: "johannes",
-          type: "like",
-          toUserName: "sohail",
-        },
-        {
-          fromUserName: "chris",
-          type: "comment",
-          toUserName: "sohail",
-        },
-        {
-          fromUserName: "devin",
-          type: "comment",
-          toUserName: "sohail",
-        },
-        {
-          fromUserName: "chartmetric",
-          type: "like",
-          toUserName: "sohail",
-        },
-        {
-          fromUserName: "thomas",
-          type: "comment",
-          toUserName: "sohail",
-        },
-        {
-          fromUserName: "chris",
-          type: "follow",
-          toUserName: "sohail",
-        },
-      ],
-    };
+  async asyncData({store}) {
+    store.dispatch("activity/fetchUserActivities");
+    return { };
   },
 };
 </script>
