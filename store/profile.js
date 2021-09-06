@@ -70,7 +70,7 @@ export const actions = {
     },
     async fetchUserLoop(ctx, visitedUserId) {
         const userLoopsQuery = await this.$fire.firestore.collection('loops').where('userId', '==', visitedUserId).get();
-        const userLoops = userLoopsQuery.docs.forEach((doc) => {
+        const userLoops = userLoopsQuery.docs.map((doc) => {
             const loopData = doc.data();
             return {
                 audio: loopData.audio || '',
