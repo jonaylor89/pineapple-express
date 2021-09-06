@@ -82,7 +82,6 @@ export default {
       storage: true,
       messaging: true,
       remoteConfig: true,
-
     },
   },
 
@@ -97,7 +96,7 @@ export default {
 
   loadingIndicator: {
     name: 'cube-grid',
-    color: '#101418',
-    background: 'white'
+    color: '#6200ee',
+    background: 'black'
   }
 }

@@ -27,17 +27,17 @@
         />
         <div class="w-full ml-4 flex flex-row justify-between items-center">
           <div class="flex flex-col items-center">
-            <div class="text-lg font-bold">
+            <div class="text-xl font-bold">
               {{ this.visitedUser.loopsCount || 0 }}
             </div>
             <div>Loops</div>
           </div>
           <div class="flex flex-col items-center">
-            <div class="text-lg font-bold">0</div>
+            <div class="text-xl font-bold">{{ this.followerCount || 0 }}</div>
             <div>Followers</div>
           </div>
           <div class="flex flex-col items-center">
-            <div class="text-lg font-bold">0</div>
+            <div class="text-xl font-bold">{{ this.followingCount || 0 }}</div>
             <div>Following</div>
           </div>
         </div>
@@ -48,21 +48,7 @@
         </div>
         <div>{{ this.visitedUser.bio || "" }}</div>
         <div class="w-full flex justify-center">
-          <button
-            v-if="currentUserId != visitedUser.id"
-            type="button"
-            class="
-              w-full
-              bg-purple-200
-              text-purple-700 text-base
-              font-semibold
-              px-6
-              py-2
-              rounded-lg
-            "
-          >
-            follow
-          </button>
+          <follow-button :visitedUserId="this.visitedUser.id || ''" />
         </div>
       </div>
     </div>
@@ -87,10 +73,12 @@ export default {
       id: (state) => state.profile.visitedUser?.id || "",
       profilePicture: (state) =>
         state.profile.visitedUser?.profilePicture || "",
+      followerCount: (state) => state.profile.followerCount || 0,
+      followingCount: (state) => state.profile.followingCount || 0,
     }),
   },
   methods: {
-    ...mapActions(["profile/fetchVisitedUserByUsername"]),
+    ...mapActions("profile", ["fetchVisitedUserByUsername"]),
   },
 };
 </script>

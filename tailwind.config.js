@@ -5,11 +5,15 @@ module.exports = {
     extend: {
       colors: {
         'itl-nav-bar': '#101418',
-      }
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      fontWeight: ['hover', 'focus'],
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
