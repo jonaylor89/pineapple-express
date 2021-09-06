@@ -40,15 +40,26 @@ export const actions = {
                                     .collection('activities')
                                     .limit(20)
                                     .get();
-        console.log(activitiesDocs.docs.length);
-        const activities = activitiesDocs.docs.map(() => {
+        const activities = await Promise.all(activitiesDocs.docs.map(async (doc) => {
+            const activityData = doc.data();
+            const userDoc = await this.$fire.firestore.collection('users').doc(activityData.fromUserId).get();
+            const userData = userDoc.data();
             return {
-                fromUserId: null,
-                toUserId: null,
-                type: null,
-                timestamp: null,
+                fromUserId: {
+                    id: userId,
+                    email: userData.email,
+                    username: userData?.username || "anonymous",
+                    bio: userData?.bio || "",
+                    location: userData?.location || "",
+                    loopsCount: userData?.loopsCount || 0,
+                    onboarded: userData?.onboarded || false,
+                    profilePicture: userData?.profilePicture || "",
+                },
+                // toUserId: activityData.toUserId,
+                type: activityData.type,
+                timestamp: activityData.timestamp,
             }
-        });
+        }));
         ctx.commit('SET_ACTIVITIES', activities);
     }
 }
