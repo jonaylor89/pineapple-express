@@ -4,7 +4,6 @@
     <Waveform :id="2"/>
     <Waveform :id="3"/>
   </div>
-  <!-- <Tutorial /> -->
   
 </template>
 

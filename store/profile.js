@@ -4,6 +4,7 @@ export const state = () => ({
     isFollowing: false,
     followerCount: 0,
     followingCount: 0,
+    visitedUserLoops: [],
 });
 
 export const mutations = {
@@ -18,6 +19,9 @@ export const mutations = {
             onboarded: userData?.onboarded || false,
             profilePicture: userData?.profilePicture || "",
         };
+    },
+    SET_USER_LOOPS(state, loops) {
+        state.visitedUserLoops = loops;
     },
     SET_IS_FOLLOWING(state, isFollowing) {
         state.isFollowing = isFollowing;
@@ -54,6 +58,7 @@ export const actions = {
                 profilePicture: userData?.profilePicture || "",
             });
 
+            ctx.dispatch('fetchUserLoops', userId);
             ctx.dispatch('fetchFollowerCount', userId);
             ctx.dispatch('fetchFollowingCount', userId);
             ctx.dispatch('fetchIsFollowing', userId);
@@ -62,6 +67,23 @@ export const actions = {
             // Navigator to 404 page
             this.$router.push('/');
         }
+    },
+    async fetchUserLoop(ctx, visitedUserId) {
+        const userLoopsQuery = await this.$fire.firestore.collection('loops').where('userId', '==', visitedUserId).get();
+        const userLoops = userLoopsQuery.docs.forEach((doc) => {
+            const loopData = doc.data();
+            return {
+                audio: loopData.audio || '',
+                comments: loopData.comments || 0,
+                downloads: loopData.downloads || 0,
+                likes: loopData.likes || 0,
+                tags: loopData.tags || [],
+                // timestamp: loopData.timestamp || Date.now(),
+                title: loopData.title || '',
+            };
+        });
+
+        ctx.commit('SET_USER_LOOPS', userLoops);
     },
     async fetchFollowerCount(ctx, visitedUserId) {
         const followersSnapshot = await this.$fire.firestore.collection('followers').doc(visitedUserId).collection('Followers').get();
