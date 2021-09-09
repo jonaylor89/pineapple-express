@@ -3,6 +3,7 @@
     <Waveform :id="1" />
     <Waveform :id="2"/>
     <Waveform :id="3"/>
+    <TestAudioPlayer />
   </div>
   
 </template>

@@ -4,16 +4,23 @@
           <NuxtLink :to="profilePath" class="text-indigo-700 hover:bg-gray-300 rounded-lg">{{ fromUserName }}</NuxtLink>
         </div>
         <!-- NOTE: Hard coded timestamp for display purposes -->
-        <div class="mr-5 text-gray-500">10 mins ago</div> 
+        <div class="mr-5 text-gray-500">{{showTime}}</div> 
     </div>
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
-    props: ['type', 'fromUserName'],
+    props: ['type', 'fromUserName', 'timestamp'],
     computed: {
         profilePath() {
       return "/" + this.fromUserName;
+        },
+        showTime() {
+          const utcSeconds = this.timestamp.seconds;
+          var date = new Date(utcSeconds * 1000);
+          return moment(date).fromNow();
         },
     }
 }

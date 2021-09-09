@@ -8,7 +8,8 @@
           <ActivityWidget
             :type="activities[index].type"
             :fromUserName="activities[index].fromUserId.username || ''"
-          /> {{showState}}
+            :timestamp="activities[index].timestamp"
+          /> 
         </li>
       </ul>
     </div>
@@ -45,10 +46,14 @@ export default {
   computed: {
     ...mapState({
       activities: state => state.activity.activities,
+      userId: state => state.user.id,
     }),
     showState() {
       console.log(this.activities);
-    }
+    },
+    showTime(timestamp) {
+      console.log("UserId: ", timestamp);
+    },
   },
   methods: {
     ...mapActions({

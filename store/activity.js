@@ -34,10 +34,13 @@ export const mutations = {
 };
 
 export const actions = {
-    async fetchUserActivities(ctx, userId) {
-        console.log("fetching activities: ", userId);
+    async fetchUserActivities(ctx) {
+        // console.log(ctx);
+        // console.log("fetching activities: ", this.state.user.id);
+        const userId = this.state.user.id;
         const activitiesDocs = await this.$fire.firestore
                                     .collection('activities')
+                                    .where('toUserId', '==', userId)
                                     .limit(20)
                                     .get();
         const activities = await Promise.all(activitiesDocs.docs.map(async (doc) => {
@@ -46,7 +49,7 @@ export const actions = {
             const userData = userDoc.data();
             return {
                 fromUserId: {
-                    id: userId,
+                    id: this.state.user.id,
                     email: userData.email,
                     username: userData?.username || "anonymous",
                     bio: userData?.bio || "",
