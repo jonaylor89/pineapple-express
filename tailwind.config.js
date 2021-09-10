@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         'itl-nav-bar': '#101418',
+        'itl-accent': '#6200ee',
       },
     },
   },

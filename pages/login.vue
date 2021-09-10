@@ -44,7 +44,7 @@ export default {
   middleware({ store, redirect }) {
     // If the user is authenticated
     if (store.getters.isLoggedIn) {
-      return redirect("/");
+      return redirect("/landing");
     }
   },
 };
