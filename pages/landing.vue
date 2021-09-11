@@ -5,7 +5,7 @@
     <landing-hero />
     <landing-about />
     <!-- <landing-affiliate /> -->
-    <!-- <landing-community /> -->
+    <landing-community />
     <!-- <landing-pricing /> -->
     <!-- <landing-footer /> -->
   </div>
