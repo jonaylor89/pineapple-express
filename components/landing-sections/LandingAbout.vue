@@ -3,10 +3,14 @@
     <div class="mb-10 mx-4 md:mx-32">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <div
+          v-for="(feature, i) in features"
+          :key="i"
           class="
-            tranform
-            translate-y-0
-            hover:translate-y-6
+            transform
+            hover:-translate-y-5
+            transition
+            duration-500
+            ease-in-out
             shadow-lg
             hover:shadow-2xl
             rounded-tr-xl rounded-bl-xl rounded-tl-md rounded-br-md
@@ -16,66 +20,29 @@
             p-8
             h-full
             w-full
+            group
           "
         >
-          <img src="assets/icon1.png" class="h-20" />
-          <div class="font-bold text-xl p-3">Meet New Artists</div>
+          <img
+            :src="feature.img"
+            class="
+              h-20
+              transform
+              group-hover:scale-110
+              transition
+              duration-500
+              ease-in-out
+            "
+          />
+          <div class="font-bold text-xl p-3">{{ feature.title }}</div>
           <div class="text-center">
-            Whether you're looking for a vocalist, guitarist, or an EDM
-            producer, you can find exactly what you need on In The Loop
-          </div>
-        </div>
-        <div
-          class="
-            tranform
-            translate-y-0
-            hover:translate-y-6
-            shadow-lg
-            hover:shadow-2xl
-            rounded-tr-xl rounded-bl-xl rounded-tl-md rounded-br-md
-            flex flex-col
-            justify-center
-            items-center
-            p-8
-            h-full
-            w-full
-          "
-        >
-          <img src="assets/icon2.png" class="h-20" />
-          <div class="font-bold text-xl p-3">Meet New Artists</div>
-          <div class="text-center">
-            Whether you're looking for a vocalist, guitarist, or an EDM
-            producer, you can find exactly what you need on In The Loop
-          </div>
-        </div>
-        <div
-          class="
-            tranform
-            translate-y-0
-            hover:translate-y-6
-            shadow-lg
-            hover:shadow-2xl
-            rounded-tr-xl rounded-bl-xl rounded-tl-md rounded-br-md
-            flex flex-col
-            justify-center
-            items-center
-            p-8
-            h-full
-            w-ful
-          "
-        >
-          <img src="assets/icon3.png" class="h-20" />
-          <div class="font-bold text-xl p-3">Meet New Artists</div>
-          <div class="text-center">
-            Whether you're looking for a vocalist, guitarist, or an EDM
-            producer, you can find exactly what you need on In The Loop
+            {{ feature.text }}
           </div>
         </div>
       </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2">
-        <div
-          class="flex flex-col justify-center items-center md:items-start"
-        >
+        <div class="flex flex-col justify-center items-center md:items-start">
           <div
             class="
               text-center
@@ -143,6 +110,23 @@
 export default {
   data() {
     return {
+      features: [
+        {
+          img: "assets/icon1.png",
+          title: "Meet New Artists",
+          text: "Whether you're looking for a vocalist, guitarist, or an EDM producer, you can find exactly what you need on In The Loop",
+        },
+        {
+          img: "assets/icon2.png",
+          title: "Showcase Your Work",
+          text: "Expose your new samples to new artists and build a network or creators to work with ",
+        },
+        {
+          img: "assets/icon1.png",
+          title: "Share Loops",
+          text: "No more storing short clips on hard drives or Google Drive, let your friends see your new work here ",
+        },
+      ],
       ourPhilosophy: [
         {
           img: "assets/icon2.svg",

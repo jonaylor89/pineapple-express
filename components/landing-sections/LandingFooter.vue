@@ -25,23 +25,23 @@ export default {
     return {
       icons: [
         {
-          text: "mdi-twitch",
+          text: "twitch",
           link: "https://www.twitch.tv/itl_studios",
         },
         {
-          text: "mdi-twitter",
+          text: "twitter",
           link: "https://twitter.com/itl_studios",
         },
         {
-          text: "mdi-instagram",
+          text: "instagram",
           link: "https://www.instagram.com/itl_studios/",
         },
         {
-          text: "mdi-discord",
+          text: "discord",
           link: "https://discord.gg/ZwpPGx98Qc",
         },
         {
-          text: "mdi-spotify",
+          text: "spotify",
           link: "https://open.spotify.com/show/6LQi6uQ5nEgIK9vo0am9PS",
         },
       ],
