@@ -11,9 +11,54 @@
         >
       </div>
       <div class="flex">
-        <div class="text-white font-thin text-lg px-5 py-2">Home</div>
-        <div class="text-white font-thin text-lg px-5 py-2">About</div>
-        <div class="text-white font-thin text-lg px-5 py-2">Community</div>
+        <div
+          class="
+            text-white
+            font-thin
+            text-lg
+            px-5
+            py-2
+            rounded
+            bg-white bg-opacity-0
+            hover:bg-opacity-25
+            cursor-pointer
+          "
+          v-on:click="scrollTo('#hero')"
+        >
+          Home
+        </div>
+        <div
+          class="
+            text-white
+            font-thin
+            text-lg
+            px-5
+            py-2
+            rounded
+            bg-white bg-opacity-0
+            hover:bg-opacity-25
+            cursor-pointer
+          "
+          v-on:click="scrollTo('#about')"
+        >
+          About
+        </div>
+        <div
+          class="
+            text-white
+            font-thin
+            text-lg
+            px-5
+            py-2
+            rounded
+            bg-white bg-opacity-0
+            hover:bg-opacity-25
+            cursor-pointer
+          "
+          v-on:click="scrollTo('#community')"
+        >
+          Community
+        </div>
         <div
           class="
             text-white
@@ -39,6 +84,12 @@ export default {
   props: {
     color: String,
     shadow: String,
+  },
+  methods: {
+    scrollTo(id) {
+      const el = document.querySelector(id);
+      window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
+    },
   },
 };
 </script>

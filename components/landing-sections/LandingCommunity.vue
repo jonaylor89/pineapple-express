@@ -1,94 +1,96 @@
 <template>
-  <div
-    class="
-      flex flex-col
-      justify-start
-      items-center
-      md:items-start
-      mx-3
-      md:mx-32
-      mt-10
-    "
-  >
+  <section id="community">
     <div
       class="
-        text-center
-        md:text-left
-        text-3xl
-        md:text-5xl
-        font-extrabold
-        leading-none
-        tracking-tight
-        mb-4
+        flex flex-col
+        justify-start
+        items-center
+        md:items-start
+        mx-3
+        md:mx-32
+        mt-10
       "
     >
-      <span
+      <div
         class="
-          bg-clip-text
-          text-transparent
-          bg-gradient-to-r
-          to-red-600
-          from-itl-accent
+          text-center
+          md:text-left
+          text-3xl
+          md:text-5xl
+          font-extrabold
+          leading-none
+          tracking-tight
+          mb-4
         "
       >
-        Join the Community
-      </span>
-    </div>
-    <div class="text-center text-gray-500 md:text-left text-xl font-medium">
-      The <span class="font-bold">In The Loop</span> community is full of
-      up-and-coming artists & producers looking to collaborate on their next big
-      thing
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <div v-for="(features, i) in features" :key="i">
-        <div
+        <span
           class="
-            bg-cover
-            bf-center
-            shadow-xl
-            rounded-2xl
-            p-8
-            my-4
-            flex flex-col
-            justify-around
-            items-center
-            w-full
-            h-full
+            bg-clip-text
+            text-transparent
+            bg-gradient-to-r
+            to-red-600
+            from-itl-accent
           "
-          :class="features.img"
         >
+          Join the Community
+        </span>
+      </div>
+      <div class="text-center text-gray-500 md:text-left text-xl font-medium">
+        The <span class="font-bold">In The Loop</span> community is full of
+        up-and-coming artists & producers looking to collaborate on their next
+        big thing
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div v-for="(features, i) in features" :key="i">
           <div
             class="
-              font-extrabold
-              text-center text-3xl
-              py-3
-              md:text-4xl
-              text-white
+              bg-cover
+              bf-center
+              shadow-xl
+              rounded-2xl
+              p-8
+              my-4
+              flex flex-col
+              justify-around
+              items-center
+              w-full
+              h-full
             "
+            :class="features.img"
           >
-            {{ features.title }}
+            <div
+              class="
+                font-extrabold
+                text-center text-3xl
+                py-3
+                md:text-4xl
+                text-white
+              "
+            >
+              {{ features.title }}
+            </div>
+            <div class="py-4 text-center text-white md:text-lg">
+              {{ features.text }}
+            </div>
+            <a
+              class="
+                bg-white
+                text-itl-accent
+                hover:bg-gray-200
+                font-bold
+                rounded-full
+                px-4
+                py-2
+              "
+              :href="features.buttonLink"
+            >
+              {{ features.buttonTitle }}
+            </a>
           </div>
-          <div class="py-4 text-center text-white md:text-lg">
-            {{ features.text }}
-          </div>
-          <a
-            class="
-              bg-white
-              text-itl-accent
-              hover:bg-gray-200
-              font-bold
-              rounded-full
-              px-4
-              py-2
-            "
-            :href="features.buttonLink"
-          >
-            {{ features.buttonTitle }}
-          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
