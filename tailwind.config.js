@@ -9,6 +9,7 @@ module.exports = {
       }, backgroundImage: theme => ({
         'landing-comm-1': "url('/assets/community_pic_1.png')",
         'landing-comm-2': "url('/assets/community_pic_2.png')",
+        'landing-affiliate': "url('/assets/bgDownload.jpg')",
       }),
 
     },

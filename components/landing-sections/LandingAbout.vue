@@ -13,7 +13,7 @@
             flex flex-col
             justify-center
             items-center
-            p-5
+            p-8
             h-full
             w-full
           "
@@ -36,7 +36,7 @@
             flex flex-col
             justify-center
             items-center
-            p-5
+            p-8
             h-full
             w-full
           "
@@ -59,7 +59,7 @@
             flex flex-col
             justify-center
             items-center
-            p-5
+            p-8
             h-full
             w-ful
           "
@@ -74,7 +74,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2">
         <div
-          class="flex flex-col justify-center items-center md:items-start mx-5"
+          class="flex flex-col justify-center items-center md:items-start"
         >
           <div
             class="
@@ -112,7 +112,7 @@
           >
             Dedication to the Creators!
           </div>
-          <div class="flex flex-col justify-between items-start">
+          <div class="flex flex-col justify-between items-left">
             <div
               v-for="(item, i) in ourPhilosophy"
               :key="i"

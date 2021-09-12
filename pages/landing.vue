@@ -4,7 +4,7 @@
     <!-- <landing-header />  -->
     <landing-hero />
     <landing-about />
-    <!-- <landing-affiliate /> -->
+    <landing-affiliate />
     <landing-community />
     <!-- <landing-pricing /> -->
     <!-- <landing-footer /> -->

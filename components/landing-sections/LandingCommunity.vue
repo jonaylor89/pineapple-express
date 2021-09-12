@@ -7,12 +7,13 @@
       md:items-start
       mx-3
       md:mx-32
+      mt-10
     "
   >
     <div
       class="
         text-center
-        md:text-start
+        md:text-left
         text-3xl
         md:text-5xl
         font-extrabold
@@ -33,7 +34,7 @@
         Join the Community
       </span>
     </div>
-    <div class="text-center text-gray-500 md:text-start text-xl font-medium">
+    <div class="text-center text-gray-500 md:text-left text-xl font-medium">
       The <span class="font-bold">In The Loop</span> community is full of
       up-and-coming artists & producers looking to collaborate on their next big
       thing
@@ -42,6 +43,8 @@
       <div v-for="(features, i) in features" :key="i">
         <div
           class="
+            bg-cover
+            bf-center
             shadow-xl
             rounded-2xl
             p-8
