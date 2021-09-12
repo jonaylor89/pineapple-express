@@ -220,7 +220,7 @@ export default {
   stroke: white;
   transform: translateY(0);
 }
-.playBut:hover .trangle {
+.playBut:hover .triangle {
   stroke-dashoffset: 0;
   opacity: 1;
   stroke: white;
