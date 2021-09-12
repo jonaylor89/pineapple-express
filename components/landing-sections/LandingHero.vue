@@ -2,7 +2,6 @@
   <section id="hero" class="relative z-0">
     <div
       class="
-        bg-fixed
         grid grid-cols-1
         md:grid-cols-2
         bg-gradient-to-br
