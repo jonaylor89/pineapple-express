@@ -18,7 +18,17 @@
             The Loop Affiliates can start earning income on their loops while
             they build their audience.
           </div>
-          <div class="border-white border-2 px-5 py-3 rounded-full font-bold">
+          <div
+            class="
+              bg-white bg-opacity-0
+              hover:bg-opacity-25
+              border-white border-2
+              px-5
+              py-3
+              rounded-full
+              font-bold
+            "
+          >
             <a
               href="https://nzqgw10avlu.typeform.com/to/Ondtg1Wj"
               class="text-white"

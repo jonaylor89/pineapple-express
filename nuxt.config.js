@@ -89,7 +89,7 @@ export default {
     component: 'fa',
     suffix: true,
     icons: {
-      solid: ['faHome'],
+      solid: ['faHome', 'faBars'],
       brands: ['faApple', 'faGoogle'],
     }
   },
