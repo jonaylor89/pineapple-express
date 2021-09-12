@@ -5,7 +5,16 @@
     </div>
     <div class="bg-black py-5">
       <div class="mx-5 divide-y-reverse divide-gray-900">
-        <div></div>
+        <div class="flex flex-row justify-center">
+          <div v-for="(icon, i) in icons" :key="i" class="px-3 md:px-6">
+            <a :href="icon.link">
+              <fa-icon
+                :icon="['fab', icon.text]"
+                class="text-white w-full h-full text-2xl"
+              />
+            </a>
+          </div>
+        </div>
         <div class="text-gray-400 text-center py-4 text-sm font-thin">
           Made with 💜 in Richmond, Virginia
         </div>
