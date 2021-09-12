@@ -10,7 +10,7 @@
             <a :href="icon.link">
               <fa-icon
                 :icon="['fab', icon.text]"
-                class="text-white w-full h-full text-2xl"
+                class="text-white w-full h-full text-2xl transform hover:-translate-y-1"
               />
             </a>
           </div>
