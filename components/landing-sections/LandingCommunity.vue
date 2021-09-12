@@ -107,7 +107,7 @@ export default {
         },
         {
           img: "bg-landing-comm-2",
-          title: "Discord Community",
+          title: "Discord Server",
           text: "Expose your new samples to new artists and build a network or creators to work with",
           buttonTitle: "Join the Discord",
           buttonLink: "https://discord.gg/ZwpPGx98Qc",
