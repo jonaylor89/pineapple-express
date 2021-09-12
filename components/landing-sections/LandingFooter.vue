@@ -1,0 +1,51 @@
+<template>
+  <div class="mt-6">
+    <div class="w-full">
+      <img src="assets/borderWavesBlack.svg" />
+    </div>
+    <div class="bg-black py-5">
+      <div class="mx-5 divide-y-reverse divide-gray-900">
+        <div></div>
+        <div class="text-gray-400 text-center py-4 text-sm font-thin">
+          Made with 💜 in Richmond, Virginia
+        </div>
+        <hr />
+        <div class="text-gray-400 text-center py-4 text-sm font-light">
+          {{ new Date().getFullYear() }} —
+          <span class="text-bold">In The Loop LLC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      icons: [
+        {
+          text: "mdi-twitch",
+          link: "https://www.twitch.tv/itl_studios",
+        },
+        {
+          text: "mdi-twitter",
+          link: "https://twitter.com/itl_studios",
+        },
+        {
+          text: "mdi-instagram",
+          link: "https://www.instagram.com/itl_studios/",
+        },
+        {
+          text: "mdi-discord",
+          link: "https://discord.gg/ZwpPGx98Qc",
+        },
+        {
+          text: "mdi-spotify",
+          link: "https://open.spotify.com/show/6LQi6uQ5nEgIK9vo0am9PS",
+        },
+      ],
+    };
+  },
+};
+</script>

@@ -7,7 +7,7 @@
     <landing-affiliate />
     <landing-community />
     <!-- <landing-pricing /> -->
-    <!-- <landing-footer /> -->
+    <landing-footer />
   </div>
 </template>
 
