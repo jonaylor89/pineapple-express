@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="relative z-0">
+  <section id="hero" class="relative">
     <div
       class="
         grid grid-cols-1
@@ -54,8 +54,8 @@
         >
           Join the Waitlist
         </button>
-        <div class="video py-4" v-on:click="openDialog">
-          <a class="playBut flex flex-row items-center cursor-pointer">
+        <div class="video py-4" @click="openDialog">
+          <div class="playBut flex flex-row items-center cursor-pointer">
             <svg
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@
             <p class="text-white text-center font-bold md:text-left px-3">
               Demo Video
             </p>
-          </a>
+          </div>
         </div>
       </div>
 
@@ -119,7 +119,7 @@
           />
         </div>
       </div>
-      <div class="absolute bottom-0 left-0 w-full z--1">
+      <div class="absolute bottom-0 left-0 w-full z-30">
         <img
           class="absolute bottom-0 left-0 w-full overflow-hidden"
           src="assets/borderWaves.svg"
@@ -127,18 +127,35 @@
       </div>
     </div>
     <div
-      v-if="dialog === true"
+      v-if="dialog"
+      class="
+        overflow-x-hidden overflow-y-auto
+        fixed
+        inset-0
+        z-50
+        outline-none
+        focus:outline-none
+        justify-center
+        items-center
+        flex
+        text-white
+      "
+      @click="closeDialog"
+    >
+      <youtube :video-id="videoId" @ready="ready" @playing="playing"> </youtube>
+    </div>
+    <div
+      v-if="dialog"
       class="
         fixed
-        top-0
-        left-0
+        inset-0
         w-full
         h-full
         bg-black bg-opacity-75
-        z-100
+        z-40
         cursor-pointer
       "
-      v-on:click="closeDialog"
+      @click="closeDialog"
     ></div>
   </section>
 </template>
@@ -149,14 +166,35 @@ export default {
     return {
       dialog: false,
       videoId: "7YWRxSDwAi8",
+      player: null,
     };
   },
   methods: {
     openDialog() {
       this.dialog = true;
     },
-    openDialog() {
+    closeDialog() {
       this.dialog = false;
+    },
+    ready(event) {
+      this.player = event.target;
+    },
+    playing(event) {
+      // The player is playing a video.
+      console.log(event);
+    },
+    stop() {
+      this.player.stopVideo();
+    },
+    pause() {
+      this.player.pauseVideo();
+    },
+  },
+  watch: {
+    dialog(value) {
+      if (!value) {
+        this.pause();
+      }
     },
   },
 };
