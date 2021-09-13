@@ -102,6 +102,7 @@ export default {
         'faTwitter',
         'faSpotify',
         'faDiscord',
+        'faTiktok',
       ],
     }
   },

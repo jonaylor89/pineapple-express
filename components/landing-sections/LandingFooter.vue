@@ -10,7 +10,14 @@
             <a :href="icon.link">
               <fa-icon
                 :icon="['fab', icon.text]"
-                class="text-white w-full h-full text-2xl transform hover:-translate-y-1"
+                class="
+                  text-white
+                  w-full
+                  h-full
+                  text-2xl
+                  transform
+                  hover:-translate-y-1
+                "
               />
             </a>
           </div>
@@ -33,6 +40,10 @@ export default {
   data() {
     return {
       icons: [
+        {
+          text: "tiktok",
+          link: "https://www.tiktok.com/@itl_studios",
+        },
         {
           text: "twitch",
           link: "https://www.twitch.tv/itl_studios",
