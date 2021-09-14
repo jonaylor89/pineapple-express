@@ -3,7 +3,6 @@
         <div>{{ type.charAt(0).toUpperCase() + type.slice(1)}} from
           <NuxtLink :to="profilePath" class="text-indigo-700 hover:bg-gray-300 rounded-lg">{{ fromUserName }}</NuxtLink>
         </div>
-        <!-- NOTE: Hard coded timestamp for display purposes -->
         <div class="mr-5 text-gray-500">{{showTime}}</div> 
     </div>
 </template>

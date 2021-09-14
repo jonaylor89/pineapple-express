@@ -93,6 +93,8 @@ export default {
       solid: [
         'faHome',
         'faBars',
+        'faPlayCircle',
+        'faPauseCircle'
       ],
       brands: [
         'faApple',

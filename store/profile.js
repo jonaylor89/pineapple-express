@@ -58,7 +58,7 @@ export const actions = {
                 profilePicture: userData?.profilePicture || "",
             });
 
-            ctx.dispatch('fetchUserLoops', userId);
+            ctx.dispatch('fetchUserLoop', userId);
             ctx.dispatch('fetchFollowerCount', userId);
             ctx.dispatch('fetchFollowingCount', userId);
             ctx.dispatch('fetchIsFollowing', userId);
@@ -78,7 +78,7 @@ export const actions = {
                 downloads: loopData.downloads || 0,
                 likes: loopData.likes || 0,
                 tags: loopData.tags || [],
-                // timestamp: loopData.timestamp || Date.now(),
+                timestamp: loopData.timestamp || Date.now(),
                 title: loopData.title || '',
             };
         });
