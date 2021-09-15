@@ -60,7 +60,7 @@ export const actions = {
                 },
                 // toUserId: activityData.toUserId,
                 type: activityData.type,
-                timestamp: activityData.timestamp,
+                timestamp: activityData.timestamp?.toDate(),
             }
         }));
         ctx.commit('SET_ACTIVITIES', activities);

@@ -26,13 +26,17 @@
         <div v-if="playing === true" class="flex justify-center items-center">
             <fa-icon v-on:click="toggle" icon='pause-circle' class="
             text-indigo-700 
-            text-7xl"
+            lg:text-7xl
+            text-lg
+            ml-5"
             />
         </div>
         <div v-else class="flex justify-center items-center">
             <fa-icon v-on:click="toggle" icon='play-circle' class="
             text-indigo-700 
-            text-7xl"
+            lg:text-7xl
+            text-lg
+            ml-5"
             />
         </div>
     
@@ -71,10 +75,7 @@ export default {
             return "wave" + this.id;
         },
         showTime() {
-            // console.log(this.timestamp)
-          const utcSeconds = this.loop.timestamp.seconds;
-          var date = new Date(utcSeconds * 1000);
-          return moment(date).fromNow();
+          return moment(this.loop.timestamp).fromNow();
         }
     },
     mounted() {

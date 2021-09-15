@@ -78,7 +78,7 @@ export const actions = {
                 downloads: loopData.downloads || 0,
                 likes: loopData.likes || 0,
                 tags: loopData.tags || [],
-                timestamp: loopData.timestamp || Date.now(),
+                timestamp: loopData.timestamp?.toDate() || Date.now(),
                 title: loopData.title || '',
             };
         });
