@@ -3,12 +3,13 @@
     class=
     "grid grid-cols-4 
     border-2 border-purple-700 
-    mt-6 mx-5 
+    mt-6
     space-x-1 
     rounded-xl
-    md:mx-96">
-
-        <div v-on:click="toggle" 
+    md:w-1/2 md:mx-auto
+    shadow-lg
+    ">
+        <!-- <div v-on:click="toggle" 
         class=
         "flex justify-center items-center 
         rounded-full
@@ -18,13 +19,26 @@
         my-8
         ml-12
         md:w-20 md:justify-center
+        shadow-md
        ">
         {{ playing ? "Pause" : "Play "}}
+        </div> -->
+        <div v-if="playing === true" class="flex justify-center items-center">
+            <fa-icon v-on:click="toggle" icon='pause-circle' class="
+            text-indigo-700 
+            text-7xl"
+            />
+        </div>
+        <div v-else class="flex justify-center items-center">
+            <fa-icon v-on:click="toggle" icon='play-circle' class="
+            text-indigo-700 
+            text-7xl"
+            />
         </div>
     
         <div class="col-span-3 flex-col">
-            <h1 class="md:ml-6">1017 Pooh Shiesty Cove</h1>
-            <h2 class="md:ml-6 text-gray-400">Playboy Carti</h2>
+            <h1 class="md:ml-6">{{this.loop.title}}</h1>
+            <h2 class="md:ml-6 text-gray-400">{{showTime}}</h2>
             <!-- Waveform -->
             <div :id='idPath'
                 class=
@@ -41,10 +55,11 @@
 <script>
 import WaveSurfer from "wavesurfer.js";
 import CursorPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.cursor.min.js';
+import moment from 'moment';
 
 export default {
     name: "waveform",
-    props: ['id'],
+    props: ['loop', 'id'],
     data() {
         return {
             waveform: null,
@@ -53,8 +68,13 @@ export default {
     },
     computed: {
         idPath() {
-            console.log(`ID: ${this.id}`)
             return "wave" + this.id;
+        },
+        showTime() {
+            // console.log(this.timestamp)
+          const utcSeconds = this.loop.timestamp.seconds;
+          var date = new Date(utcSeconds * 1000);
+          return moment(date).fromNow();
         }
     },
     mounted() {
@@ -84,6 +104,7 @@ export default {
             ],
         })
         this.waveform.load("assets/example_media_demo.wav");
+        // this.waveform.load(this.loop.audio || "assets/example_media_demo.wav");
     },
     methods: {
         play() {

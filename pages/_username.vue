@@ -19,9 +19,7 @@
             w-16
             h-16
             object-cover
-            md:mb-5
-            md:h-64
-            md:w-64
+            md:mb-5 md:h-64 md:w-64
           "
           :src="profilePicture"
         />
@@ -52,7 +50,14 @@
         </div>
       </div>
     </div>
-    <div class="h-screen flex-grow"></div>
+    <div class="h-screen flex-grow">
+      <ul>
+        <li v-for="(loop, index) in this.loops" :key="index">
+          <Waveform :loop="loop" :id="index"/>
+        </li>
+      </ul>
+      {{showUser}}
+    </div>
   </div>
 </template>
 
@@ -75,7 +80,11 @@ export default {
         state.profile.visitedUser?.profilePicture || "",
       followerCount: (state) => state.profile.followerCount || 0,
       followingCount: (state) => state.profile.followingCount || 0,
+      loops: (state) => state.profile.visitedUserLoops
     }),
+    showUser() {
+      console.log("User Loops: ", this.loops);
+    }
   },
   methods: {
     ...mapActions("profile", ["fetchVisitedUserByUsername"]),

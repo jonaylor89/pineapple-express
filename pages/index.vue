@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Waveform :id="1" />
-    <Waveform :id="2"/>
-    <Waveform :id="3"/>
-    <TestAudioPlayer />
+    <h1 class="text-4xl mt-5 p-5 lg:p-0 lg:mx-80">Feed</h1>
+    
+    <!-- <TestAudioPlayer /> -->
   </div>
   
 </template>
