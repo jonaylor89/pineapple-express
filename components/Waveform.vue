@@ -2,40 +2,26 @@
     <div id="container" 
     class=
     "grid grid-cols-4 
-    border-2 border-purple-700 
+    md:border-2 md:border-purple-700 
     mt-6
-    space-x-1 
+    lg:space-x-1 lg:shadow-lg
     rounded-xl
     md:w-1/2 md:mx-auto
-    shadow-lg
+    sm:divide-y-8 sm:divide-gray-500
     ">
-        <!-- <div v-on:click="toggle" 
-        class=
-        "flex justify-center items-center 
-        rounded-full
-        bg-indigo-600
-        text-white
-        hover:bg-grey-300
-        my-8
-        ml-12
-        md:w-20 md:justify-center
-        shadow-md
-       ">
-        {{ playing ? "Pause" : "Play "}}
-        </div> -->
         <div v-if="playing === true" class="flex justify-center items-center">
             <fa-icon v-on:click="toggle" icon='pause-circle' class="
             text-indigo-700 
-            lg:text-7xl
-            text-lg
+            lg:text-6xl
+            text-5xl
             ml-5"
             />
         </div>
         <div v-else class="flex justify-center items-center">
             <fa-icon v-on:click="toggle" icon='play-circle' class="
             text-indigo-700 
-            lg:text-7xl
-            text-lg
+            lg:text-6xl
+            text-5xl
             ml-5"
             />
         </div>

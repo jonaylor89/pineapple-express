@@ -83,7 +83,7 @@ export default {
       loops: (state) => state.profile.visitedUserLoops
     }),
     showUser() {
-      console.log("User Loops: ", this.loops);
+      // console.log("User Loops: ", this.loops);
     }
   },
   methods: {
