@@ -24,9 +24,8 @@
               hover:bg-opacity-25
               cursor-pointer
             "
-            v-on:click="scrollTo('#hero')"
           >
-            Home
+            <a href="https://blog.intheloopstudio.com"> Blog </a>
           </div>
           <div
             class="
