@@ -91,3 +91,5 @@ sw.*
 
 # .lock
 yarn.lock
+
+.vercel
