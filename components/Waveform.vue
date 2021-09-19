@@ -7,7 +7,7 @@
     lg:space-x-1 lg:shadow-lg
     rounded-xl
     md:w-1/2 md:mx-auto
-    sm:divide-y-8 sm:divide-gray-500
+    
     ">
         <div v-if="playing === true" class="flex justify-center items-center">
             <fa-icon v-on:click="toggle" icon='pause-circle' class="
@@ -90,10 +90,11 @@ export default {
                 }),
             ],
         })
-        this.waveform.load("assets/example_media_demo.wav");
-        // this.waveform.load(this.loop.audio || "assets/example_media_demo.wav");
+        // this.waveform.load("assets/example_media_demo.wav");
+        this.waveform.load(this.loop.audio || "assets/example_media_demo.wav");
     },
     methods: {
+        // TODO: Make button change on end of audio
         play() {
             this.waveform.play();
         },

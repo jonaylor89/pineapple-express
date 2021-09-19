@@ -24,6 +24,7 @@ export const actions = {
       .collection("feeds")
       .doc(this.state.user.id)
       .collection("userFeed")
+      .limit(20)
       .get();
    
     // console.log(userFeedQuery.docs)
@@ -38,9 +39,12 @@ export const actions = {
             tags: loopData.tags || [],
             timestamp: loopData.timestamp?.toDate() || Date.now(),
             title: loopData.title || '',
+            deleted: loopData.deleted || false,
       }
     }));
+    const followingLoopsFiltered = followingLoops.filter((loop) => loop.deleted !== true);
+
     // console.log(followingLoops);
-    ctx.commit('SET_FOLLOWING_LOOPS', followingLoops);
+    ctx.commit('SET_FOLLOWING_LOOPS', followingLoopsFiltered);
   },
 };
