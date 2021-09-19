@@ -1,30 +1,10 @@
 export default {
+  ssr: false,
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
-  vite: { ssr: true },
-
-  firebase: {
-    config: {
-      apiKey: 'AIzaSyBIHwGYfS7MGREOR4nSTYJxZPLXNApTJ3M',
-      authDomain: 'in-the-loop-306520.firebaseapp.com',
-      projectId: 'in-the-loop-306520',
-      storageBucket: 'in-the-loop-306520.appspot.com',
-      messagingSenderId: '269420857313',
-      appId: '1:269420857313:web:1ace984d27362ddcf7f4a0',
-      measurementId: 'G-D8EFYQBB2Q'
-    },
-    services: {
-      auth: true,
-      firestore: true,
-      functions: true,
-      storage: true,
-      database: true,
-      performance: true,
-      analytics: true,
-      remoteConfig: true
-    }
-  },
+  vite: { ssr: false },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -49,6 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '@/plugins/youtube',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -58,6 +39,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/fontawesome',
     'nuxt-vite',
   ],
 
@@ -74,5 +56,62 @@ export default {
         autoprefixer: {},
       }
     }
+  },
+
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyBIHwGYfS7MGREOR4nSTYJxZPLXNApTJ3M',
+      authDomain: 'in-the-loop-306520.firebaseapp.com',
+      projectId: 'in-the-loop-306520',
+      storageBucket: 'in-the-loop-306520.appspot.com',
+      messagingSenderId: '269420857313',
+      appId: '1:269420857313:web:1ace984d27362ddcf7f4a0',
+      measurementId: 'G-D8EFYQBB2Q'
+    },
+    // onFirebaseHosting: process.env.NODE_ENV === 'development' ? false : true,
+    services: {
+      auth: {
+        persistence: 'local', // default
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChangedAction',
+          subscribeManually: false
+        },
+        ssr: false,
+      },
+      firestore: true,
+      functions: true,
+      storage: true,
+      messaging: true,
+      remoteConfig: true,
+    },
+  },
+
+  fontawesome: {
+    component: 'fa',
+    suffix: true,
+    icons: {
+      solid: [
+        'faHome',
+        'faBars',
+        'faPlayCircle',
+        'faPauseCircle'
+      ],
+      brands: [
+        'faApple',
+        'faGoogle',
+        'faTwitch',
+        'faInstagram',
+        'faTwitter',
+        'faSpotify',
+        'faDiscord',
+        'faTiktok',
+      ],
+    }
+  },
+
+  loadingIndicator: {
+    name: 'cube-grid',
+    color: '#6200ee',
+    background: 'black'
   }
 }
