@@ -32,7 +32,8 @@
         "
       >
         <div>
-          <img src="assets/happy_bunch_desk.svg" alt="hero illustration" />
+          <img :src="happyBunchDeskUrl" alt="hero illustration" />
+          <!-- <img src="https://assets.vercel.com/image/upload/q_auto/front/zeit/og.png" alt="hero illustration" /> -->
         </div>
       </div>
     </div>
@@ -40,7 +41,15 @@
 </template>
 
 <script>
+import happyBunchDeskUrl from "~/assets/happy_bunch_desk.svg";
+// TODO: Import pic
+
 export default {
+  data() {
+    return {
+      happyBunchDeskUrl: happyBunchDeskUrl,
+    };
+  },
   middleware({ store, redirect }) {
     // If the user is authenticated
     if (store.getters.isLoggedIn) {
